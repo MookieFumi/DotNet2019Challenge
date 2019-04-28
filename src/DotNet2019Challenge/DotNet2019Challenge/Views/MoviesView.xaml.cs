@@ -1,25 +1,26 @@
-﻿using DotNet2019Challenge.ViewModels;
+﻿using Autofac;
+using DotNet2019Challenge.ViewModels;
 using Xamarin.Forms;
 
 namespace DotNet2019Challenge.Views
 {
     public partial class MoviesView : ContentPage
     {
-        private MoviesViewModel _vm;
+        private MoviesViewModel _viewModel;
 
         public MoviesView()
         {
             InitializeComponent();
 
-            _vm = new MoviesViewModel();
-            BindingContext = _vm;
+            _viewModel = App.Container.Resolve<MoviesViewModel>();
+            BindingContext = _viewModel;
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            await _vm.LoadDataAsync();
+            await _viewModel.LoadDataAsync();
         }
     }
 }

@@ -16,6 +16,13 @@ namespace DotNet2019Challenge.ViewModels
         private ObservableCollection<TVShow> _topRatedTvShows;
         private ObservableCollection<TVShow> _popularTvShows;
 
+        private readonly IMoviesService _moviesService;
+
+        public MoviesViewModel(IMoviesService moviesService)
+        {
+            _moviesService = moviesService;
+        }
+
         public bool IsBusy
         {
             get { return _isBusy; }
@@ -90,7 +97,7 @@ namespace DotNet2019Challenge.ViewModels
 
         private async Task LoadTopRatedMoviesAync()
         {
-            var result = await MoviesService.Instance.GetTopRatedMoviesAsync();
+            var result = await _moviesService.GetTopRatedMoviesAsync();
 
             TopRatedMovies = new ObservableCollection<Movie>(result.Results);
             Highlight = TopRatedMovies.FirstOrDefault();
@@ -98,21 +105,21 @@ namespace DotNet2019Challenge.ViewModels
 
         private async Task LoadPopularMoviesAync()
         {
-            var result = await MoviesService.Instance.GetPopularMoviesAsync();
+            var result = await _moviesService.GetPopularMoviesAsync();
 
             PopularMovies = new ObservableCollection<Movie>(result.Results);
         }
 
         private async Task LoadTopRatedTvShowsAync()
         {
-            var result = await MoviesService.Instance.GetTopRatedShowsAsync();
+            var result = await _moviesService.GetTopRatedShowsAsync();
 
             TopRatedTvShows = new ObservableCollection<TVShow>(result.Results);
         }
 
         private async Task LoadPopularTvShowsAync()
         {
-            var result = await MoviesService.Instance.GetPopularShowsAsync();
+            var result = await _moviesService.GetPopularShowsAsync();
 
             PopularTvShows = new ObservableCollection<TVShow>(result.Results);
         }
