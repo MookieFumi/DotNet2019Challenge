@@ -9,7 +9,7 @@ namespace DotNet2019Challenge
         {
             InitializeComponent();
 
-            MainPage = new MoviesView();
+            MainPage = new NavigationPage(new MoviesView());
         }
 
         protected override void OnStart()
