@@ -6,10 +6,10 @@ using CarouselView.FormsPlugin.Android;
 namespace DotNet2019Challenge.Droid
 {
     [Activity(
-        Label = "DotNet2019Challenge", 
-        Icon = "@mipmap/icon", 
-        Theme = "@style/MainTheme", 
-        MainLauncher = true, 
+        Label = "DotNet2019Challenge",
+        Icon = "@mipmap/icon",
+        Theme = "@style/MainTheme",
+        MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
@@ -19,7 +19,9 @@ namespace DotNet2019Challenge.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             CarouselViewRenderer.Init();
             LoadApplication(new App());
         }

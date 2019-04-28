@@ -1,6 +1,7 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="DotNet2019Challenge.Views.Templates.MovieItemTemplate">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -51,15 +52,15 @@
             <Grid     
                 Grid.Column="0"
                 Grid.Row="0">
-                <Image
+                <ffimageloading:CachedImage
                     Source="{Binding PosterPath, Converter={StaticResource MovieImageConverter}}">
-                    <Image.Style>
+                    <ffimageloading:CachedImage.Style>
                         <OnPlatform x:TypeArguments="Style">
                             <On Platform="Android, iOS" Value="{StaticResource PhoneMovieImageStyle}"/>
                             <On Platform="UWP" Value="{StaticResource MovieImageStyle}"/>
                         </OnPlatform>
-                    </Image.Style>
-                </Image>
+                    </ffimageloading:CachedImage.Style>
+                </ffimageloading:CachedImage>
             </Grid>
             <Label 	
                 Grid.Column="0"
