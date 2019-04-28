@@ -37,7 +37,7 @@
                 <ColumnDefinition>
                     <ColumnDefinition.Width>
                         <OnPlatform x:TypeArguments="GridLength">
-                            <On Platform="Android, iOS" Value="Auto"/>
+                            <On Platform="Android, iOS" Value="160"/>
                             <On Platform="UWP" Value="200"/>
                         </OnPlatform>
                     </ColumnDefinition.Width>
@@ -49,37 +49,26 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="12" />
             </Grid.RowDefinitions>
-            <Grid     
+            <ffimageloading:CachedImage 
                 Grid.Column="0"
-                Grid.Row="0">
-                <ffimageloading:CachedImage
-                    Source="{Binding PosterPath, Converter={StaticResource MovieImageConverter}}">
-                    <ffimageloading:CachedImage.Style>
-                        <OnPlatform x:TypeArguments="Style">
-                            <On Platform="Android, iOS" Value="{StaticResource PhoneMovieImageStyle}"/>
-                            <On Platform="UWP" Value="{StaticResource MovieImageStyle}"/>
-                        </OnPlatform>
-                    </ffimageloading:CachedImage.Style>
-                </ffimageloading:CachedImage>
-            </Grid>
+                Grid.Row="0"
+                Source="{Binding PosterPath, Converter={StaticResource MovieImageConverter}}">
+                <ffimageloading:CachedImage.Style>
+                    <OnPlatform x:TypeArguments="Style">
+                        <On Platform="Android, iOS" Value="{StaticResource PhoneMovieImageStyle}"/>
+                        <On Platform="UWP" Value="{StaticResource MovieImageStyle}"/>
+                    </OnPlatform>
+                </ffimageloading:CachedImage.Style>
+            </ffimageloading:CachedImage>
             <Label 	
                 Grid.Column="0"
                 Grid.Row="1" 
                 Text="{Binding OriginalTitle}"
                 Style="{StaticResource MovieTitleStyle}"/>
-            <Grid          
-                Grid.Column="0"
-                Grid.Row="2">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="24" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Label 
+            <Label Grid.Column="0"
+                Grid.Row="2"
                         Text="{Binding VoteAverage}"
                         Style="{StaticResource MovieRatingStyle}"/>
-                </Grid>
-            </Grid>
         </Grid>
     </ContentView.Content>
 </ContentView>
