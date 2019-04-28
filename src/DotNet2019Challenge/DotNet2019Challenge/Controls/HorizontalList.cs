@@ -62,7 +62,7 @@ namespace DotNet2019Challenge.Controls
 
         public HorizontalList()
         {
-            BackgroundColor = Color.FromHex("#1E2634");
+            BackgroundColor = Color.FromHex(Application.Current.Resources["BackgroundColor"].ToString());
             Spacing = 6;
             _scrollView = new ScrollView();
             _itemsStackLayout = new StackLayout

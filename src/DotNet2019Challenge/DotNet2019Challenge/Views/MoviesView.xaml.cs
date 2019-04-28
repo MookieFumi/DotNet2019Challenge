@@ -4,12 +4,12 @@ using Xamarin.Forms;
 namespace DotNet2019Challenge.Views
 {
     public partial class MoviesView : ContentPage
-	{
-        MoviesViewModel _vm;
+    {
+        private MoviesViewModel _vm;
 
-        public MoviesView ()
-		{
-			InitializeComponent ();
+        public MoviesView()
+        {
+            InitializeComponent();
 
             _vm = new MoviesViewModel();
             BindingContext = _vm;
@@ -18,7 +18,7 @@ namespace DotNet2019Challenge.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
- 
+
             await _vm.LoadDataAsync();
         }
     }
